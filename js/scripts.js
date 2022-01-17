@@ -17,6 +17,12 @@ pokemonList[2] = {
 };
 
 // Printing the name and size of all pokemon onto page
+let output = "";
 for(let i = 0; i < pokemonList.length; i++){
-  document.write(`${pokemonList[i].name} (height: ${pokemonList[i].height})<br>`)
+  output = `${pokemonList[i].name} (height: ${pokemonList[i].height})`;
+  // Adding the comment "Wow, that's big" to pokemon that are taller than 0.6m
+  if(pokemonList[i].height > 0.6){
+    output = `${output} - Wow, that's big!`;
+  }
+  document.write(`${output}<br>`);
 }
