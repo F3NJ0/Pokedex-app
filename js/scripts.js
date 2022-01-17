@@ -15,3 +15,8 @@ pokemonList[2] = {
   height: 0.5,
   types: ['water']
 };
+
+// Printing the name and size of all pokemon onto page
+for(let i = 0; i < pokemonList.length; i++){
+  document.write(`${pokemonList[i].name} (height: ${pokemonList[i].height})<br>`)
+}
