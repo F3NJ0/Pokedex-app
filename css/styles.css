@@ -1,1 +1,50 @@
 /* this will be the styles.css file */
+:root {
+  --background-color: #eee5e9;
+  --primary-color: #2b303a;
+  --highlight-color: #92dce5;
+  --warning-color: #d64933;
+  --header-color: #7c7c7c;
+  --primary-font: 'Dongle', sans-serif;
+  --font-weight-light: 300;
+  --font-weight-bold: 700;
+  --font-size-body: 32px;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body {
+  color: var(--primary-color);
+  background-color: var(--background-color);
+  font-family: var(--primary-font);
+  font-weight: var(--font-weight-light);
+  font-size: var(--font-size-body);
+
+  /* Sets the line-height to 1.6 */
+  line-height: 1.6;
+}
+
+main {
+  margin: 20px;
+}
+
+.page-header {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  background-color: var(--header-color);
+}
