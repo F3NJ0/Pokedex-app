@@ -20,13 +20,13 @@ pokemonList[2] = {
 
 function printArrayDetails(list){
   let output = "";
-  for(let i = 0; i < list.length; i++){
-    output =  `${output} <br> ${list[i].name} (height: ${list[i].height})`;
+  pokemonList.forEach(function(pokemon){
+    output =  `${output} <br> ${pokemon.name} (height: ${pokemon.height})`;
     // Adding the comment "Wow, that's big" to pokemon that are taller than 0.6m
-    if(list[i].height > 0.6){
+    if(pokemon.height > 0.6){
       output = `${output} - Wow, that's big!`;
     }
-  }
+  });
   return output;
 }
 let str = printArrayDetails(pokemonList);
