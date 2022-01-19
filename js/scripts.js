@@ -17,12 +17,17 @@ pokemonList[2] = {
 };
 
 // Printing the name and size of all pokemon onto page
-let output = "";
-for(let i = 0; i < pokemonList.length; i++){
-  output = `${pokemonList[i].name} (height: ${pokemonList[i].height})`;
-  // Adding the comment "Wow, that's big" to pokemon that are taller than 0.6m
-  if(pokemonList[i].height > 0.6){
-    output = `${output} - Wow, that's big!`;
+
+function printArrayDetails(list){
+  let output = "";
+  for(let i = 0; i < list.length; i++){
+    output =  `${output} <br> ${list[i].name} (height: ${list[i].height})`;
+    // Adding the comment "Wow, that's big" to pokemon that are taller than 0.6m
+    if(list[i].height > 0.6){
+      output = `${output} - Wow, that's big!`;
+    }
   }
-  document.write(`${output}<br>`);
+  return output;
 }
+let str = printArrayDetails(pokemonList);
+document.getElementById("container").innerHTML = str;
