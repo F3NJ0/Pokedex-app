@@ -19,9 +19,14 @@ let pokemonRepository = (function(){
   };
 
   function add(pokemon) {
-    //validating type of passed attribute to be an object
+    //validating type of passed parameter to be an object
     if(typeof pokemon === 'object' && !Array.isArray(pokemon)){
-      pokemonList.push(pokemon);
+      //validating Object.keys() to equal expected keys
+      if(Object.keys(pokemon)[0] === 'name' &&
+        Object.keys(pokemon)[1] === 'height' &&
+        Object.keys(pokemon)[2] === 'types'){
+        pokemonList.push(pokemon);
+      }
     }
   }
 
