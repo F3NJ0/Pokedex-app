@@ -19,7 +19,10 @@ let pokemonRepository = (function(){
   };
 
   function add(pokemon) {
-    pokemonList.push(pokemon);
+    //validating type of passed attribute to be an object
+    if(typeof pokemon === 'object' && !Array.isArray(pokemon)){
+      pokemonList.push(pokemon);
+    }
   }
 
   function getAll() {
