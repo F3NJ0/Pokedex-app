@@ -34,9 +34,16 @@ let pokemonRepository = (function(){
     return pokemonList;
   }
 
+// function that allows to find specific Pokémon only by name
+  function findPokemon(searchName){
+    let filteredPokemon = pokemonList.filter(pokemon => pokemon.name === searchName);
+    return filteredPokemon
+  }
+
   return {
     add: add,
-    getAll: getAll
+    getAll: getAll,
+    findPokemon: findPokemon
   };
 })();
 
