@@ -69,27 +69,36 @@ main {
   color: #ffffff;
 }
 
+/* grid fallback */
+.pokemon-list li .pokemon-button{
+  display: inline-block;
+  width: 33%;
+}
+
 /* creating a grid for the pokemon list */
-.pokemon-list li {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 5px;
-  margin: 5px;
-  list-style-type: none;
+@supports (display: grid){
+  .pokemon-list li {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 5px;
+    padding: 5px;
+    margin: 5px;
+    list-style-type: none;
+  }
 }
 
-.pokemon-list li {
-  width: auto;
-  min-height: auto;
-  padding: 5px;
-  margin: 5px;
-}
-
+/* stlying of the pokemon-button element as grid item */
 .pokemon-list li .pokemon-button {
   width: auto;
+  min-height: auto;
   background-color: var(--background-color-secondary);
   color: var(--highlight-color);
   font-weight: var(--font-weight-bold);
+
+  /* allow text in button to break when screen is too small */
+  word-wrap: break-word;
+  word-break: break-all;
+
   /* adds spacing to the button (this will be discussed more in-depth later) */
   padding: 10px;
   margin: 5px;
@@ -100,10 +109,24 @@ main {
   transition: 0.2s opacity;
 }
 
+/* styling hover effects for the button */
 .pokemon-list li .pokemon-button:hover {
   /* lets the mouse appear as a hand when hovering over the button */
   cursor: pointer;
 
   /* reduces the opacity of the button to 80% */
   opacity: 0.8;
+}
+
+/* #### Responsive Design styling #### */
+@media all and (max-width: 750px) {
+  /*TBD*/
+}
+
+@media all and (max-width: 500px) {
+  /*TBD*/
+}
+
+@media all and (min-width: 500px) and (max-width: 750px) {
+  /*TBD*/
 }

@@ -40,6 +40,7 @@ let pokemonRepository = (function(){
     return filteredPokemon
   }
 
+// function that allows to create a button as list item for a pokemon
   function addListItem(pokemon) {
     let ulElement = document.querySelector('.pokemon-list');
     let listItem = document.createElement('li');
