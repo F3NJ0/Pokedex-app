@@ -46,20 +46,3 @@ let pokemonRepository = (function(){
     findPokemon: findPokemon
   };
 })();
-
-// Creating a function to return name and size of all pokemon in a string
-function printArrayDetails(list){
-  let output = "";
-  list.forEach(function(pokemon){
-    output =  `${output} <br> ${pokemon.name} (height: ${pokemon.height})`;
-    // Adding the comment "Wow, that's big" to pokemon that are taller than 0.6m
-    if(pokemon.height > 0.6){
-      output = `${output} - Wow, that's big!`;
-    }
-  });
-  return output;
-}
-
-// Printing the name and size of all pokemon onto page
-let str = printArrayDetails(pokemonRepository.getAll());
-document.getElementById("container").innerHTML = str;
