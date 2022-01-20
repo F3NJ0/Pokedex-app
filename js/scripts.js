@@ -40,7 +40,7 @@ let pokemonRepository = (function(){
     return filteredPokemon
   }
 
-// function that allows to create a button as list item for a pokemon
+// function that creates a button as list item for a passed pokemon
   function addListItem(pokemon) {
     let ulElement = document.querySelector('.pokemon-list');
     let listItem = document.createElement('li');
@@ -49,6 +49,21 @@ let pokemonRepository = (function(){
     button.classList.add('pokemon-button');
     listItem.appendChild(button);
     ulElement.appendChild(listItem);
+
+    // Adding an event listener to newly created button
+    buttonEventListener(button,pokemon);
+  }
+
+// function to add an event listener to a button that will show details of the pokemon when the button is clicked
+  function buttonEventListener(button,pokemon){
+    button.addEventListener('click', function(){
+      showDetails(pokemon);
+    });
+  }
+
+// function that prints pokemon details onto console
+  function showDetails(pokemon){
+    console.log(pokemon);
   }
 
   return {

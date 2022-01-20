@@ -118,6 +118,11 @@ main {
   opacity: 0.8;
 }
 
+/* different background color when button is clicked */
+.pokemon-list li .pokemon-button:active {
+  background-color: #BABABA;
+}
+
 /* #### Responsive Design styling #### */
 @media all and (max-width: 750px) {
   /*TBD*/
