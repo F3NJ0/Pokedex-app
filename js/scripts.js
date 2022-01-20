@@ -46,3 +46,18 @@ let pokemonRepository = (function(){
     findPokemon: findPokemon
   };
 })();
+
+// Creating a list of buttons for each pokemon in the repository
+function createPokemonList(list){
+  let ulElement = document.querySelector('.pokemon-list');
+  list.forEach(function(pokemon){
+    let listItem = document.createElement('li');
+    let button = document.createElement('button');
+    button.innerText = pokemon.name;
+    button.classList.add('pokemon-button');
+    listItem.appendChild(button);
+    ulElement.appendChild(listItem);
+  });
+}
+
+createPokemonList(pokemonRepository.getAll());
