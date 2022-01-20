@@ -1,14 +1,15 @@
-/* this will be the styles.css file */
 :root {
-  --background-color: #eee5e9;
-  --primary-color: #2b303a;
-  --highlight-color: #92dce5;
-  --warning-color: #d64933;
-  --header-color: #7c7c7c;
+  --background-color: #ffffff;
+  --background-color-secondary: #d9d9d9;
+  --primary-color: #353535;
+  --highlight-color: #3c6e71;
+  --warning-color: #9a031e;
+  --header-color: #3c6e71;
   --primary-font: 'Dongle', sans-serif;
   --font-weight-light: 300;
   --font-weight-bold: 700;
   --font-size-body: 32px;
+  --font-size-headings: 40px;
 }
 
 html {
@@ -45,11 +46,30 @@ main {
 }
 
 .page-header {
+  display: inline-flex;
   width: 100%;
   padding: 20px;
   background-color: var(--header-color);
 }
 
+.page-header__item {
+  flex: 1;
+  align-items: center;
+  margin: 10px;
+}
+
+.page-header__logo {
+  max-width: 40px;
+  max-height: 40px;
+}
+
+.page-header__name {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-headings);
+  color: #ffffff;
+}
+
+/* creating a grid for the pokemon list */
 .pokemon-list li {
   display: grid;
   grid-template-columns: 1fr;
@@ -63,9 +83,27 @@ main {
   min-height: auto;
   padding: 5px;
   margin: 5px;
-  background-color: var(--header-color);
 }
 
-.pokemon-list li > * {
+.pokemon-list li .pokemon-button {
   width: auto;
+  background-color: var(--background-color-secondary);
+  color: var(--highlight-color);
+  font-weight: var(--font-weight-bold);
+  /* adds spacing to the button (this will be discussed more in-depth later) */
+  padding: 10px;
+  margin: 5px;
+  border-radius: 3px;
+
+  /* gives the button a bottom border with a width of 2px, a type of solid, and a color in RGBA format */
+  border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+  transition: 0.2s opacity;
+}
+
+.pokemon-list li .pokemon-button:hover {
+  /* lets the mouse appear as a hand when hovering over the button */
+  cursor: pointer;
+
+  /* reduces the opacity of the button to 80% */
+  opacity: 0.8;
 }
