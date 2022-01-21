@@ -10,8 +10,7 @@ let pokemonRepository = (function(){
     if(typeof pokemon === 'object' && !Array.isArray(pokemon)){
       //validating Object.keys() to equal expected keys
       if(Object.keys(pokemon)[0] === 'name' &&
-        Object.keys(pokemon)[1] === 'height' &&
-        Object.keys(pokemon)[2] === 'types'){
+        Object.keys(pokemon)[1] === 'detailsUrl'){
         pokemonList.push(pokemon);
       }
     }
