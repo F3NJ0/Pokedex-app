@@ -2,22 +2,9 @@
 let pokemonRepository = (function(){
   // Creating an array to hold pokemon objects
   let pokemonList = [];
-  pokemonList[0] = {
-    name: 'Bulasaur',
-    height: 0.7,
-    types: ['grass', 'poison']
-  };
-  pokemonList[1] = {
-    name: 'Charmander',
-    height: 0.6,
-    types: ['fire']
-  };
-  pokemonList[2] = {
-    name: 'Squirtle',
-    height: 0.5,
-    types: ['water']
-  };
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
+// function to add a pokemon to the pokemonList
   function add(pokemon) {
     //validating type of passed parameter to be an object
     if(typeof pokemon === 'object' && !Array.isArray(pokemon)){
@@ -61,20 +48,57 @@ let pokemonRepository = (function(){
     });
   }
 
-// function that prints pokemon details onto console
+// function that loads details from api & then prints pokemon details onto console
   function showDetails(pokemon){
-    console.log(pokemon);
+    loadDetails(pokemon).then(function () {
+      console.log(pokemon);
+    });
+  }
+
+// function to load list of pokemon from apiUrl, stores name & detailsUrl in pokemonList via add()
+  function loadList(){
+    return fetch(apiUrl).then(function(response){
+      return response.json();
+    }).then(function(json){
+      json.results.forEach(function(item){
+        let pokemon  = {
+          name: item.name,
+          detailsUrl: item.url
+        };
+        add(pokemon);
+      });
+    }).catch(function(e){
+      console.error(e);
+    });
+  }
+
+// function to load further details about pokemon (items) in the pokemonList: image, height & types
+  function loadDetails(item){
+    let url = item.detailsUrl;
+    return fetch(url).then(function(respone){
+      return response.json();
+    }).then(function(details){
+      item.imageUrl = details.sprites.front_default;
+      item.height = details.height;
+      item.types = details.types;
+    }).catch(function(e){
+      console.error(e);
+    });
   }
 
   return {
     add: add,
     getAll: getAll,
     findPokemon: findPokemon,
-    addListItem: addListItem
+    addListItem: addListItem,
+    loadList: loadList,
+    loadDetails: loadDetails
   };
 })();
 
-// Creating a list of buttons for each pokemon in the repository
-pokemonRepository.getAll().forEach(function(pokemon){
-    pokemonRepository.addListItem(pokemon);
+pokemonRepository.loadList().then(function(){
+  // Creating a list of buttons for each pokemon in the repository
+  pokemonRepository.getAll().forEach(function(pokemon){
+      pokemonRepository.addListItem(pokemon);
+  });
 });
