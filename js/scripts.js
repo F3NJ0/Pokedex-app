@@ -74,7 +74,7 @@ let pokemonRepository = (function(){
 // function to load further details about pokemon (items) in the pokemonList: image, height & types
   function loadDetails(item){
     let url = item.detailsUrl;
-    return fetch(url).then(function(respone){
+    return fetch(url).then(function(response){
       return response.json();
     }).then(function(details){
       item.imageUrl = details.sprites.front_default;
