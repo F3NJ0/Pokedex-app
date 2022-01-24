@@ -86,12 +86,10 @@ let pokemonRepository = (function(){
   }
 
   return {
-    add: add,
     getAll: getAll,
     findPokemon: findPokemon,
     addListItem: addListItem,
-    loadList: loadList,
-    loadDetails: loadDetails
+    loadList: loadList
   };
 })();
 
