@@ -56,7 +56,9 @@ let pokemonRepository = (function(){
 
 // function to load list of pokemon from apiUrl, stores name & detailsUrl in pokemonList via add()
   function loadList(){
+    showLoadingMessage();
     return fetch(apiUrl).then(function(response){
+      hideLoadingMessage();
       return response.json();
     }).then(function(json){
       json.results.forEach(function(item){
@@ -67,23 +69,41 @@ let pokemonRepository = (function(){
         add(pokemon);
       });
     }).catch(function(e){
+      hideLoadingMessage();
       console.error(e);
     });
   }
 
 // function to load further details about pokemon (items) in the pokemonList: image, height & types
   function loadDetails(item){
+    showLoadingMessage();
     let url = item.detailsUrl;
     return fetch(url).then(function(response){
+      hideLoadingMessage();
       return response.json();
     }).then(function(details){
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
       item.types = details.types;
     }).catch(function(e){
+      hideLoadingMessage();
       console.error(e);
     });
   }
+
+// function to show loading animation when loading pokemon details
+  function showLoadingMessage(){
+    let loading = document.querySelector('#loading');
+    loading.classList.add("display");
+  }
+
+// function to hide loading animation when loading pokemon details
+  function hideLoadingMessage(){
+    let loading = document.querySelector('#loading');
+    loading.classList.remove("display");
+  }
+
+
 
   return {
     getAll: getAll,
