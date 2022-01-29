@@ -56,9 +56,9 @@ let pokemonRepository = (function(){
 
 // function to load list of pokemon from apiUrl, stores name & detailsUrl in pokemonList via add()
   function loadList(){
-    showLoadingMessage();
+    showLoadingSpinner();
     return fetch(apiUrl).then(function(response){
-      hideLoadingMessage();
+      hideLoadingSpinner();
       return response.json();
     }).then(function(json){
       json.results.forEach(function(item){
@@ -69,38 +69,48 @@ let pokemonRepository = (function(){
         add(pokemon);
       });
     }).catch(function(e){
-      hideLoadingMessage();
+      hideLoadingSpinner();
       console.error(e);
     });
   }
 
 // function to load further details about pokemon (items) in the pokemonList: image, height & types
   function loadDetails(item){
-    showLoadingMessage();
+    showLoadingSpinner();
     let url = item.detailsUrl;
     return fetch(url).then(function(response){
-      hideLoadingMessage();
+      hideLoadingSpinner();
       return response.json();
     }).then(function(details){
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
       item.types = details.types;
     }).catch(function(e){
-      hideLoadingMessage();
+      hideLoadingSpinner();
       console.error(e);
     });
   }
 
 // function to show loading animation when loading pokemon details
-  function showLoadingMessage(){
-    let loading = document.querySelector('#loading');
-    loading.classList.add("display");
+  function showLoadingSpinner(){
+    let loadingContainer = document.querySelector('#loading-container');
+
+    // Clear preexisting content
+    loadingContainer.innerHTML = '';
+
+    // Add spinner element
+    let spinner = document.createElement('div');
+    spinner.classList.add('spinner');
+    loadingContainer.appendChild(spinner);
+
+    // make container and spinner visible
+    loadingContainer.classList.add('is-visible');
   }
 
 // function to hide loading animation when loading pokemon details
-  function hideLoadingMessage(){
-    let loading = document.querySelector('#loading');
-    loading.classList.remove("display");
+  function hideLoadingSpinner(){
+    let loadingContainer = document.querySelector('#loading-container');
+    loadingContainer.classList.remove('is-visible');
   }
 
 // function to show modal with pokemon details
