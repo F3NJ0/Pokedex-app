@@ -26,34 +26,6 @@ let pokemonRepository = (function(){
     return filteredPokemon
   }
 
-// function that creates a button as list item for a passed pokemon
-  function addListItem(pokemon) {
-    let ulElement = document.querySelector('.pokemon-list');
-    let listItem = document.createElement('li');
-    let button = document.createElement('button');
-    button.innerText = pokemon.name;
-    button.classList.add('pokemon-button');
-    listItem.appendChild(button);
-    ulElement.appendChild(listItem);
-
-    // Adding an event listener to newly created button
-    buttonEventListener(button,pokemon);
-  }
-
-// function to add an event listener to a button that will show details of the pokemon when the button is clicked
-  function buttonEventListener(button,pokemon){
-    button.addEventListener('click', function(){
-      showDetails(pokemon);
-    });
-  }
-
-// function that loads details from api & then prints pokemon details onto console
-  function showDetails(pokemon){
-    loadDetails(pokemon).then(function () {
-      console.log(pokemon);
-    });
-  }
-
 // function to load list of pokemon from apiUrl, stores name & detailsUrl in pokemonList via add()
   function loadList(){
     showLoadingSpinner();
@@ -113,6 +85,34 @@ let pokemonRepository = (function(){
     loadingContainer.classList.remove('is-visible');
   }
 
+// function that creates a button as list item for a passed pokemon
+  function addListItem(pokemon) {
+    let ulElement = document.querySelector('.pokemon-list');
+    let listItem = document.createElement('li');
+    let button = document.createElement('button');
+    button.innerText = pokemon.name;
+    button.classList.add('pokemon-button');
+    listItem.appendChild(button);
+    ulElement.appendChild(listItem);
+
+    // Adding an event listener to newly created button
+    buttonEventListener(button,pokemon);
+  }
+
+// function to add an event listener to a button that will show details of the pokemon when the button is clicked
+  function buttonEventListener(button,pokemon){
+    button.addEventListener('click', function(){
+      showDetails(pokemon);
+    });
+  }
+
+// function that loads details from api & then prints pokemon details onto console
+  function showDetails(pokemon){
+    loadDetails(pokemon).then(function () {
+      showModal(pokemon.name, pokemon.height)
+    });
+  }
+
 // function to show modal with pokemon details
   function showModal(title, text) {
     let modalContainer = document.querySelector('#modal-container');
@@ -157,10 +157,7 @@ let pokemonRepository = (function(){
     });
   }
 
-  document.querySelector('#show-modal').addEventListener('click', function () {
-    showModal('Modal title', 'This is the modal content!');
-  });
-
+  // function to hide modal
   function hideModal(){
     let modalContainer = document.querySelector('#modal-container');
     modalContainer.classList.remove('is-visible');
