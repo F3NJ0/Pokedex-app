@@ -109,12 +109,12 @@ let pokemonRepository = (function(){
 // function that loads details from api & then prints pokemon details onto console
   function showDetails(pokemon){
     loadDetails(pokemon).then(function () {
-      showModal(pokemon.name, pokemon.height)
+      showModal(pokemon.name, 'Height: ' + pokemon.height, pokemon.imageUrl);
     });
   }
 
 // function to show modal with pokemon details
-  function showModal(title, text) {
+  function showModal(title, text, img_src) {
     let modalContainer = document.querySelector('#modal-container');
 
     // Clear preexisting content
@@ -137,9 +137,14 @@ let pokemonRepository = (function(){
     let modalText = document.createElement('p');
     modalText.innerText = text;
 
+    let modalImg = document.createElement('img');
+    modalImg.classList.add('modal-img');
+    modalImg.src = img_src;
+
     modal.appendChild(closeButtonElement);
     modal.appendChild(modalTitle);
     modal.appendChild(modalText);
+    modal.appendChild(modalImg);
     modalContainer.appendChild(modal);
 
     // make modal visible
