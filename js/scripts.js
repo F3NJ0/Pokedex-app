@@ -87,17 +87,14 @@ let pokemonRepository = (function(){
 
 // function that creates a button as list item for a passed pokemon
   function addListItem(pokemon) {
-    let ulElement = document.querySelector('.pokemon-list');
-    let listItem = document.createElement('li');
-    listItem.classList.add('group-list-item');
-    let button = document.createElement('button');
-    button.innerText = pokemon.name;
-    button.classList.add('pokemon-button list-group-item-action');
-    listItem.appendChild(button);
-    ulElement.appendChild(listItem);
+    let listGroupElement = document.querySelector('.pokemon-list');
+    let listItemButton = document.createElement('button');
+    listItemButton.innerText = pokemon.name;
+    listItemButton.classList.add('list-group-item', 'list-group-item-action', 'text-center', 'text-uppercase');
+    listGroupElement.appendChild(listItemButton);
 
     // Adding an event listener to newly created button
-    buttonEventListener(button,pokemon);
+    buttonEventListener(listItemButton,pokemon);
   }
 
 // function to add an event listener to a button that will show details of the pokemon when the button is clicked
