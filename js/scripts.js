@@ -57,6 +57,7 @@ let pokemonRepository = (function(){
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
       item.types = details.types;
+      item.weight = details.weight;
     }).catch(function(e){
       hideLoadingSpinner();
       console.error(e);
@@ -90,13 +91,27 @@ let pokemonRepository = (function(){
     let listGroupElement = document.querySelector('.pokemon-list');
     let listItemButton = document.createElement('button');
     listItemButton.innerText = pokemon.name;
-    listItemButton.classList.add('list-group-item', 'list-group-item-action', 'text-center', 'text-uppercase');
+    listItemButton.classList.add('list-group-item', 'list-group-item-action',
+      'text-center', 'text-uppercase');
+
+    // Adding the data toggle and data target to trigger the modal
+    listItemButton.setAttribute('data-toggle', 'modal');
+    listItemButton.setAttribute('data-target', '#pokemonModal');
+
+    // Appending the button to the parent div element
     listGroupElement.appendChild(listItemButton);
 
+    $('#pokemonModal').on('show.bs.modal', function(e){
+      loadDetails(pokemon).then(function () {
+        showModal(pokemon);
+      });
+    })
+
     // Adding an event listener to newly created button
-    buttonEventListener(listItemButton,pokemon);
+    //buttonEventListener(listItemButton,pokemon);
   }
 
+/*
 // function to add an event listener to a button that will show details of the pokemon when the button is clicked
   function buttonEventListener(button,pokemon){
     button.addEventListener('click', function(){
@@ -104,6 +119,8 @@ let pokemonRepository = (function(){
     });
   }
 
+
+// HIER BOOTSTRAP CODE FÜR BUTTON EVENT LISTENER!!
 // function that loads details from api & then prints pokemon details onto console
   function showDetails(pokemon){
     loadDetails(pokemon).then(function () {
@@ -111,8 +128,43 @@ let pokemonRepository = (function(){
     });
   }
 
+*/
+
 // function to show modal with pokemon details
-  function showModal(title, text, img_src) {
+  function showModal(pokemon) {
+    let modalTitle = $('.modal-title');
+    let modalBody = $('.modal-body');
+
+    // Clear preexisting content
+    modalTitle.empty();
+    modalBody.empty();
+
+    // Adding pokemon name as Title
+    modalTitle.append(document.createTextNode(pokemon.name));
+
+    // Creating elements for the modalBody
+    // 1. image
+    let imageElement = document.createElement('img');
+    imageElement.classList.add('modal-img');
+    imageElement.src = pokemon.imageUrl;
+
+    // 2. Height
+    let heightElement = $('<p>' + 'Height: ' + pokemon.height + '<p>');
+
+    // 3. weight
+    let weightElement = $('<p>' + 'Weight: ' + pokemon.weight + '<p>');
+
+    // 4. Types
+    let typesElement = $('<p>' + 'Types: ' + pokemon.types + '<p>');
+
+    // Appending elements to modalBody
+    modalBody.append(imageElement);
+    modalBody.append(heightElement);
+    modalBody.append(weightElement);
+    modalBody.append(typesElement);
+
+
+    /*
     let modalContainer = document.querySelector('#modal-container');
 
     // Clear preexisting content
@@ -158,8 +210,10 @@ let pokemonRepository = (function(){
         hideModal();
       }
     });
+    */
   }
 
+/*
   // function to hide modal
   function hideModal(){
     let modalContainer = document.querySelector('#modal-container');
@@ -173,6 +227,7 @@ let pokemonRepository = (function(){
       hideModal();
     }
   });
+  */
 
   return {
     getAll: getAll,
