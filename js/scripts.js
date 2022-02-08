@@ -140,7 +140,8 @@ let pokemonRepository = (function(){
     modalBody.empty();
 
     // Adding pokemon name as Title
-    modalTitle.append(document.createTextNode(pokemon.name));
+    let titleElement = $('<h1>' + pokemon.name + '</h1>');
+    modalTitle.append(titleElement);
 
     // Creating elements for the modalBody
     // 1. image
@@ -149,13 +150,13 @@ let pokemonRepository = (function(){
     imageElement.src = pokemon.imageUrl;
 
     // 2. Height
-    let heightElement = $('<p>' + 'Height: ' + pokemon.height + '<p>');
+    let heightElement = $('<p>' + 'Height: ' + pokemon.height + '</p>');
 
     // 3. weight
-    let weightElement = $('<p>' + 'Weight: ' + pokemon.weight + '<p>');
+    let weightElement = $('<p>' + 'Weight: ' + pokemon.weight + '</p>');
 
     // 4. Types
-    let typesElement = $('<p>' + 'Types: ' + pokemon.types + '<p>');
+    let typesElement = $('<p>' + 'Types: ' + pokemon.types + '</p>');
 
     // Appending elements to modalBody
     modalBody.append(imageElement);
