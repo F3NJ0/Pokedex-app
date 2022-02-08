@@ -101,34 +101,27 @@ let pokemonRepository = (function(){
     // Appending the button to the parent div element
     listGroupElement.appendChild(listItemButton);
 
+/*
     $('#pokemonModal').on('show.bs.modal', function(e){
-      loadDetails(pokemon).then(function () {
-        showModal(pokemon);
-      });
-    })
+      showDetails(pokemon);
+    })*/
 
     // Adding an event listener to newly created button
-    //buttonEventListener(listItemButton,pokemon);
+    buttonEventListener(listItemButton,pokemon);
   }
 
-/*
 // function to add an event listener to a button that will show details of the pokemon when the button is clicked
   function buttonEventListener(button,pokemon){
     button.addEventListener('click', function(){
       showDetails(pokemon);
     });
-  }
 
-
-// HIER BOOTSTRAP CODE FÜR BUTTON EVENT LISTENER!!
 // function that loads details from api & then prints pokemon details onto console
   function showDetails(pokemon){
     loadDetails(pokemon).then(function () {
-      showModal(pokemon.name, 'Height: ' + pokemon.height, pokemon.imageUrl);
+      showModal(pokemon);
     });
   }
-
-*/
 
 // function to show modal with pokemon details
   function showModal(pokemon) {
