@@ -1,10 +1,8 @@
 :root {
   --background-color: #ffffff;
-  --background-color-secondary: #d9d9d9;
   --primary-color: #353535;
   --highlight-color: #3c6e71;
   --warning-color: #9a031e;
-  --header-color: #3c6e71;
   --primary-font: 'Dongle', sans-serif;
   --font-weight-light: 300;
   --font-weight-bold: 700;
@@ -14,16 +12,11 @@
   --font-size-h1-small-screen: 32px;
 }
 
-html {
-  box-sizing: border-box;
-}
-
 *,
 *::before,
 *::after {
   box-sizing: inherit;
 }
-
 
 body {
   color: var(--primary-color);
@@ -51,34 +44,12 @@ h1 {
   font-size: var(--font-size-h1);
 }
 
-button {
-  font-size: var(--font-size-body);
+.navbar-brand {
+  font-size: var(--font-size-h1);
 }
-
-.page-header {
-  display: inline-flex;
-  width: 100%;
-  padding: 20px;
-  background-color: var(--header-color);
-}
-
-.page-header__item {
-  flex: 1;
-  align-items: center;
-  margin: 10px;
-}
-
 .navbar__logo {
   max-width: 40px;
   max-height: 40px;
-}
-
-.page-header__name {
-  font-weight: var(--font-weight-bold);
-  color: #ffffff;
-  /* allow text in button to break when screen is too small */
-  word-wrap: break-word;
-  word-break: break-all;
 }
 
 .modal-img {
