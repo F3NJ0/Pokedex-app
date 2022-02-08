@@ -134,7 +134,7 @@ let pokemonRepository = (function(){
     modalBody.empty();
 
     // Adding pokemon name as Title
-    let titleElement = $('<h1>' + pokemon.name + '</h1>');
+    let titleElement = $('<h1 class="text-uppercase">' + pokemon.name + '</h1>');
     modalTitle.append(titleElement);
 
     // Creating elements for the modalBody
@@ -157,72 +157,7 @@ let pokemonRepository = (function(){
     modalBody.append(heightElement);
     modalBody.append(weightElement);
     modalBody.append(typesElement);
-
-
-    /*
-    let modalContainer = document.querySelector('#modal-container');
-
-    // Clear preexisting content
-    modalContainer.innerHTML = '';
-
-    let modal = document.createElement('div');
-    modal.classList.add('modal');
-
-    // Add new modal content
-    let closeButtonElement = document.createElement('button');
-    closeButtonElement.classList.add('modal-close');
-    closeButtonElement.innerText = 'Close';
-
-    // Close modal when user clicks on 'Close'
-    closeButtonElement.addEventListener('click', hideModal);
-
-    let modalTitle = document.createElement('h1');
-    modalTitle.innerText = title;
-
-    let modalText = document.createElement('p');
-    modalText.innerText = text;
-
-    let modalImg = document.createElement('img');
-    modalImg.classList.add('modal-img');
-    modalImg.src = img_src;
-
-    modal.appendChild(closeButtonElement);
-    modal.appendChild(modalTitle);
-    modal.appendChild(modalText);
-    modal.appendChild(modalImg);
-    modalContainer.appendChild(modal);
-
-    // make modal visible
-    modalContainer.classList.add('is-visible');
-
-    // Close modal when user clicks on 'Close'
-    closeButtonElement.addEventListener('click', hideModal);
-
-    // Close modal when modal is open and user clicks outside of the modal
-    modalContainer.addEventListener('click', (e) => {
-      let target = e.target;
-      if (target === modalContainer){
-        hideModal();
-      }
-    });
-    */
   }
-
-/*
-  // function to hide modal
-  function hideModal(){
-    let modalContainer = document.querySelector('#modal-container');
-    modalContainer.classList.remove('is-visible');
-  }
-
-  // Close modal when modal is open and user clicks 'Escape'
-  window.addEventListener('keydown', (e) => {
-    let modalContainer = document.querySelector('#modal-container');
-    if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')){
-      hideModal();
-    }
-  });
-  */
 
   return {
     getAll: getAll,
