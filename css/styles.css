@@ -8,14 +8,6 @@
   --font-weight-bold: 700;
   --font-size-body: 32px;
   --font-size-h1: 40px;
-  --font-size-body-small-screen: 26px;
-  --font-size-h1-small-screen: 32px;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
 }
 
 body {
@@ -29,16 +21,10 @@ body {
   line-height: 1.6;
 }
 
-.flex-container{
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+main {
+  margin-top: 90px;
 }
 
-main {
-  flex: 1;
-  margin: 20px;
-}
 
 h1 {
   font-size: var(--font-size-h1);
@@ -47,9 +33,13 @@ h1 {
 .navbar-brand {
   font-size: var(--font-size-h1);
 }
-.navbar__logo {
-  max-width: 40px;
-  max-height: 40px;
+
+.navbar-brand img {
+  max-width: 50px;
+  max-height: 50px;
+  float: left;
+  margin-right: 7px;
+  margin-top: 5px;
 }
 
 .modal-img {
@@ -57,6 +47,10 @@ h1 {
   margin-left: auto;
   margin-right: auto;
   max-width: 150px;
+}
+
+.close {
+  font-size: var(--font-size-h1);
 }
 
 /* Loading animation styling */
@@ -104,27 +98,4 @@ h1 {
   to {
     transform: rotate(360deg);
   }
-}
-
-/* #### Responsive Design styling #### */
-@media all and (max-width: 750px) {
-  h1 {
-    font-size: var(--font-size-h1-small-screen);
-  }
-
-  p {
-    font-size: var(--font-size-body-small-screen);
-  }
-
-  button {
-    font-size: var(--font-size-body-small-screen);
-  }
-}
-
-@media all and (max-width: 500px) {
-  /*TBD*/
-}
-
-@media all and (min-width: 500px) and (max-width: 750px) {
-  /*TBD*/
 }
