@@ -115,6 +115,7 @@ let pokemonRepository = (function(){
     button.addEventListener('click', function(){
       showDetails(pokemon);
     });
+  }
 
 // function that loads details from api & then prints pokemon details onto console
   function showDetails(pokemon){
