@@ -61,7 +61,6 @@ let pokemonRepository = (function(){
       details.types.forEach(function (element){
         item.types.push(element.type.name);
       })
-      console.log(item.types);
     }).catch(function(e){
       hideLoadingSpinner();
       console.error(e);
