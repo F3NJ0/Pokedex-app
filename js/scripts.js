@@ -22,8 +22,15 @@ let pokemonRepository = (function(){
 
 // function that allows to find specific Pokémon only by name
   function findPokemon(searchName){
-    let filteredPokemon = pokemonList.filter(pokemon => pokemon.name === searchName);
-    return filteredPokemon
+    // Clear the all the buttons on the page when user types in search box
+    $('.pokemon-list').empty();
+
+    // Add pokemon buttons for which the name includes the search string
+    pokemonList.forEach((pokemon) => {
+      if (pokemon.name.toLowerCase().includes(searchName.toLowerCase())){
+        addListItem(pokemon);
+      }
+    })
   }
 
 // function to load list of pokemon from apiUrl, stores name & detailsUrl in pokemonList via add()
