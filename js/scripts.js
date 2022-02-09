@@ -160,7 +160,7 @@ let pokemonRepository = (function(){
     let weightElement = $('<p>' + 'Weight: ' + pokemon.weight + '</p>');
 
     // 4. Types
-    let typesElement = $('<p>' + 'Types: ' + pokemon.types + '</p>');
+    let typesElement = $('<p class="text-capitalize">' + 'Types: ' + pokemon.types.join(', ') + '</p>');
 
     // Appending elements to modalBody
     modalBody.append(imageElement);
