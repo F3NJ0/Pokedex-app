@@ -56,8 +56,12 @@ let pokemonRepository = (function(){
     }).then(function(details){
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
-      item.types = details.types;
       item.weight = details.weight;
+      item.types = [];
+      details.types.forEach(function (element){
+        item.types.push(element.type.name);
+      })
+      console.log(item.types);
     }).catch(function(e){
       hideLoadingSpinner();
       console.error(e);
